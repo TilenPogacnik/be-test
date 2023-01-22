@@ -18,4 +18,22 @@ const getUnpaidJobs = async (profileId) => {
   });
 };
 
-module.exports = { getUnpaidJobs };
+const getTotalUnpaidAmount = async (clientId) => {
+  return Job.sum("price", {
+    where: {
+      paid: { [Op.not]: true },
+    },
+    include: [
+      {
+        model: Contract,
+        attributes: [],
+        where: {
+          status: "in_progress",
+          ClientId: clientId,
+        },
+      },
+    ],
+  });
+};
+
+module.exports = { getUnpaidJobs, getTotalUnpaidAmount };

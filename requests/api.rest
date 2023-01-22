@@ -13,3 +13,12 @@ profile_id: 1
 ###Get all unpaid jobs belonging to profile
 GET http://localhost:3001/jobs/unpaid
 profile_id: 1
+
+###Top up client balance
+POST http://localhost:3001/balances/deposit/1
+profile_id: 1
+content-type: application/json
+
+{
+    "amount": 10
+}

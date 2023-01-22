@@ -5,6 +5,7 @@ const errorHandler = require("./middleware/errorHandler");
 const contractRouter = require("./routes/contracts");
 const jobRouter = require("./routes/jobs");
 const balanceRouter = require("./routes/balances");
+const adminRouter = require("./routes/admin");
 
 //App setup
 const app = express();
@@ -16,6 +17,7 @@ app.set("models", sequelize.models);
 app.use("/contracts", contractRouter);
 app.use("/jobs", jobRouter);
 app.use("/balances", balanceRouter);
+app.use("/admin", adminRouter);
 
 //Middleware
 app.use(errorHandler);

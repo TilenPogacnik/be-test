@@ -22,3 +22,7 @@ content-type: application/json
 {
     "amount": 10
 }
+
+###Get best profession 
+GET http://localhost:3001/admin/best-profession?start=2020-08-16&end=2020-08-19
+profile_id: 1

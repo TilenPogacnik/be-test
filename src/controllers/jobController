@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Job, Contract } = require("../model");
+const { Job, Contract, Profile } = require("../model");
 
 const getUnpaidJobs = async (profileId) => {
   return Job.findAll({
@@ -36,4 +36,35 @@ const getTotalUnpaidAmount = async (clientId) => {
   });
 };
 
-module.exports = { getUnpaidJobs, getTotalUnpaidAmount };
+const getAllPaidJobsInTimeRange = async (start, end) => {
+  return Job.findAll({
+    where: {
+      paid: true,
+      paymentDate: {
+        [Op.between]: [start, end],
+      },
+    },
+    include: [
+      {
+        model: Contract,
+        attributes: ["id"],
+        include: [
+          {
+            model: Profile,
+            as: "Contractor",
+            where: {
+              type: "contractor",
+            },
+            attributes: ["profession"],
+          },
+        ],
+      },
+    ],
+  });
+};
+
+module.exports = {
+  getUnpaidJobs,
+  getTotalUnpaidAmount,
+  getAllPaidJobsInTimeRange,
+};

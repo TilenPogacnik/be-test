@@ -2,16 +2,16 @@
 GET http://localhost:3001/contracts/1
 profile_id: 1
 
-###Get contract by id (wrong profile)
-GET http://localhost:3001/contracts/1
-profile_id: 2
-
 ###Get all non terminated contracts belonging to profile
 GET http://localhost:3001/contracts
 profile_id: 1
 
 ###Get all unpaid jobs belonging to profile
 GET http://localhost:3001/jobs/unpaid
+profile_id: 1
+
+###Pay job
+POST http://localhost:3001/jobs/1/pay
 profile_id: 1
 
 ###Top up client balance
@@ -28,6 +28,6 @@ GET http://localhost:3001/admin/best-profession?start=2020-08-16&end=2020-08-19
 profile_id: 1
 
 
-###Get best profession 
+###Get best clients 
 GET http://localhost:3001/admin/best-clients?start=2019-08-16&end=2023-08-19&limit=3
 profile_id: 1

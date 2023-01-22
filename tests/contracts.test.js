@@ -109,7 +109,7 @@ describe("Contracts", () => {
       });
     });
 
-    describe("GET /contracts/", () => {
+    describe("GET /contracts", () => {
       it("should return all non terminated arrays", async () => {
         const res = await request(app).get("/contracts").set("profile_id", 1);
 

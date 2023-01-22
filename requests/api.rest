@@ -9,3 +9,7 @@ profile_id: 2
 ###Get all non terminated contracts belonging to profile
 GET http://localhost:3001/contracts
 profile_id: 1
+
+###Get all unpaid jobs belonging to profile
+GET http://localhost:3001/jobs/unpaid
+profile_id: 1

@@ -45,6 +45,15 @@ Contract.init(
   {
     sequelize,
     modelName: "Contract",
+    scopes: {
+      by_profile(value) {
+        return {
+          where: {
+            [Sequelize.Op.or]: [{ ContractorId: value }, { ClientId: value }],
+          },
+        };
+      },
+    },
   }
 );
 

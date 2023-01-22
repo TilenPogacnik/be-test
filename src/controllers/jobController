@@ -1,0 +1,21 @@
+const { Op } = require("sequelize");
+const { Job, Contract } = require("../model");
+
+const getUnpaidJobs = async (profileId) => {
+  return Job.findAll({
+    where: {
+      paid: { [Op.not]: true },
+    },
+    include: [
+      {
+        model: Contract.scope({ method: ["by_profile", profileId] }),
+        attributes: [],
+        where: {
+          status: "in_progress",
+        },
+      },
+    ],
+  });
+};
+
+module.exports = { getUnpaidJobs };

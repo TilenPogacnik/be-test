@@ -26,3 +26,8 @@ content-type: application/json
 ###Get best profession 
 GET http://localhost:3001/admin/best-profession?start=2020-08-16&end=2020-08-19
 profile_id: 1
+
+
+###Get best profession 
+GET http://localhost:3001/admin/best-clients?start=2019-08-16&end=2023-08-19&limit=3
+profile_id: 1
